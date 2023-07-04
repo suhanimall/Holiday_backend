@@ -42,6 +42,11 @@ app.use("/api/hotels", hotelsRoute);
 app.use("/api/rooms", roomsRoute);
 app.use("/api/users", usersRoute);
 
+app.use("/", (req, res) => {
+    res.setHeader("Access-Control-Allow-Credentials", "true");
+    res.send("Api is Running...");
+});
+
 app.use((err, req, res, next) => {                  //error handling middleware
     const errorStatus = err.status || 500
     const errorMessage = err.message || "Something went wrong!"
